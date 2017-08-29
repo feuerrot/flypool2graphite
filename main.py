@@ -29,4 +29,4 @@ if __name__ == '__main__':
 			prefix = config['graphite_prefix'].format(worker),
 			system_name = ''
 		)
-		add_worker_stats(worker, graphite)
+		add_worker_data(worker, graphite)
