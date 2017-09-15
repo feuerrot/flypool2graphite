@@ -19,7 +19,11 @@ def add_worker_data(worker, graphite):
 	data = get_stats(worker)
 	if data['status'] != 'OK':
 		print('[!] Error: status for worker {} not OK:\n    {}'.format(worker, data))
-	print(data)
+	for elem in data['data']:
+		if data['data'][elem] == None:
+			data['data'][elem] = 0
+		else:
+			data['data'][elem] = float(data['data'][elem])
 	graphite.send_dict(data['data'])
 
 if __name__ == '__main__':
